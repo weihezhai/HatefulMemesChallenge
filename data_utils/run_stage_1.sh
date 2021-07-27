@@ -1,6 +1,7 @@
 SELF=$(dirname "$(realpath $0)")
 MEME_ROOT_DIR="$SELF/../data/hateful_memes"
 DATA_DIR="$SELF/../data"
+EDIT="$SELF/../mmediting"
 
 # OCR to get text bbox and mask
 # python3 ocr.py detect $MEME_ROOT_DIR
@@ -33,10 +34,11 @@ if [ ! -d "$MEME_ROOT_DIR/img_mask_3px" ]; then
         -v $SELF:/src \
         -v $MEME_ROOT_DIR:/data \
         dsfhe49854/vl-bert \
-        python3 /src/ocr.py generate_mask \
-        /data/ocr.box.json \
-        /data/img \
-        /data/img_mask_3px
+        python3 $SELF/ocr.py generate_mask \
+        /$MEME_ROOT_DIR/ocr.box.json \
+        /$MEME_ROOT_DIR/img \
+        /$MEME_ROOT_DIR/img_mask \
+        /$MEME_ROOT_DIR/img_masked
 fi;
 
 
