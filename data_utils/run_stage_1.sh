@@ -49,10 +49,10 @@ if [ ! -d "$MEME_ROOT_DIR/img_clean" ]; then
         -v "$SELF/../pretrain_model":/pretrain_model \
         -v "$MEME_ROOT_DIR":/data \
         dsfhe49854/mmedit \
-        python3 /mmediting/demo/inpainting_demo.py  \
-        /mmediting/configs/inpainting/deepfillv2/deepfillv2_256x256_8x2_places.py \
-        /pretrain_model/deepfillv2_256x256_8x2_places_20200619-10d15793.pth \
-        /data/img_mask_3px/ /data/img_clean
+        python3 $EDIT/demo/inpainting_demo.py  \
+        $EDIT/configs/inpainting/deepfillv2/deepfillv2_256x256_8x2_places.py \
+        $SELF/../pretrain_model/deepfillv2_256x256_8x2_places_20200619-10d15793.pth \
+        $MEME_ROOT_DIR/img_masked/ $MEME_ROOT_DIR/img_mask/ MEME_ROOT_DIR/img_clean
 fi;
 
 # Run InceptionV2 OID
