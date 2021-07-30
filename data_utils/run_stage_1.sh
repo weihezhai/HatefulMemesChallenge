@@ -62,7 +62,7 @@ if [ ! -e "$MEME_ROOT_DIR/box_annos.json" ]; then
         -v $SELF:/src \
         -v $MEME_ROOT_DIR:/data \
         dsfhe49854/vl-bert \
-        python3 /src/gen_bbox.py /data/img_clean /data/box_annos.json
+        python3 $SELF/gen_bbox.py $MEME_ROOT_DIR/img_clean $MEME_ROOT_DIR/box_annos.json
 fi;
 
 # detect and extract image patchs
